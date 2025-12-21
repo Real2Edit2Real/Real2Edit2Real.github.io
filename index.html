@@ -18,7 +18,7 @@
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
-  <link rel="icon" href="./static/images/logo.svg">
+  <link rel="icon" href="./static/images/logo.png">
 
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -70,10 +70,10 @@
     <div class="container is-max-widescreen">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Real2Edit2Real: Generating Robotic Demonstrations via a 3D Control Interface</h1>
+          <h1 class="title is-1 publication-title"><span style="color: rgb(0, 162, 255);">Real2</span><span style="color: rgb(255, 0, 195);">Edit</span><span style="color: rgb(0, 162, 255);">2Real:</span> Generating Robotic Demonstrations via a 3D Control Interface</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              <a href="https://github.com/ZhaoYujie2002">Yujie Zhao</a><sup>1*</sup>,</span>
+              <a href="https://github.com/ZhaoYujie2002">Yujie Zhao</a><sup>1,2*</sup>,</span>
             <span class="author-block">
               <a href="https://hwfan.io/about-me/">Hongwei Fan</a><sup>1,2*</sup>,
             </span>
@@ -101,8 +101,8 @@
           </div>
 
           <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>PKU-AgiBot Lab,</span>
-            <span class="author-block"><sup>2</sup>CFCS, School of Computer Science, Peking University,</span>
+            <span class="author-block"><sup>1</sup>CFCS, School of Computer Science, Peking University,</span>
+            <span class="author-block"><sup>2</sup>PKU-AgiBot Lab,</span>
             <span class="author-block"><sup>3</sup>AgiBot</span>
           </div>
           
@@ -145,7 +145,7 @@
               </span>
               <!-- Code Link. -->
               <span class="link-block">
-                <a href="https://github.com/ZhaoYujie2002/LangSplatV2"
+                <a href="https://github.com/Real2Edit2Real/Real2Edit2Real"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
@@ -187,17 +187,14 @@
     <!-- Paper video. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <div class="content has-text-justified">
-          <!-- <p>
-            <b>TL;DR:</b> We ground CLIP features into a set of 3D language Gaussians, which attains precise 3D language fields while being <font color="red"><b>199 &times;</b></font> faster than LERF.
-          </p> -->
-          <p>
-            <b>TL;DR:</b> We present LangSplatV2, which achieves high-dimensional feature splatting at 476.2 FPS and 3D open-vocabulary text querying at 384.6 FPS for high-resolution images.
-          </p>
-        </div>
         <div class="publication-video">
-          <iframe src="https://www.youtube.com/embed/KBz8lVPt7z4"
+          <video width="80%" height="auto" controls>
+            <source src="static/videos/Real2Edit2Real_demo.mp4" type="video/mp4">
+          </video>
+          <!--
+          <iframe src=""
                   frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          -->
         </div>
         <!-- TODO:Video -->
       </div>
@@ -206,22 +203,17 @@
   </div>
 </section>
 
-
-
-
 <section class="section">
   <div class="container is-max-desktop">
     <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
+      <div class="column is-full-width">
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            In this paper, we introduce LangSplatV2, which achieves high-dimensional feature splatting at 476.2 FPS and 3D open-vocabulary text querying at 384.6 FPS for high-resolution images, providing a 42 &times; speedup and a 47 &times; boost over LangSplat respectively, along with improved query accuracy.
-            LangSplat employs Gaussian Splatting to embed 2D CLIP language features into 3D, significantly enhancing speed and learning a precise 3D language field with SAM semantics. Such advancements in 3D language fields are crucial for applications that require language interaction within complex scenes. However, LangSplat does not yet achieve real-time performance (8.2 FPS), even with advanced A100 GPUs, severely limiting its broader application. 
-            In this paper, we first conduct a detailed time analysis of LangSplat, identifying the heavyweight decoder as the primary speed bottleneck. 
-            Our solution, LangSplatV2 assumes that each Gaussian acts as a sparse code within a global dictionary, leading to the learning of a 3D sparse coefficient field that entirely eliminates the need for a heavyweight decoder. By leveraging this sparsity, we further propose an efficient sparse coefficient splatting method with CUDA optimization, rendering high-dimensional feature maps at high quality while incurring only the time cost of splatting an ultra-low-dimensional feature. 
-            Our experimental results demonstrate that LangSplatV2 not only achieves better or competitive query accuracy but is also significantly faster.
+            Recent progress in robot learning has been driven by large-scale datasets and powerful visuomotor policy architectures, yet policy robustness remains limited by the substantial cost of collecting diverse demonstrations, particularly for spatial generalization in manipulation tasks. To reduce repetitive data collection, we present Real2Edit2Real, a framework that generates new demonstrations by bridging 3D editability with 2D visual data through a 3D control interface. 
+            Our approach first reconstructs scene geometry from multi-view RGB observations with a metric-scale 3D reconstruction model. Based on the reconstructed geometry, we perform depth-reliable 3D editing on point clouds to generate new manipulation trajectories while geometrically correcting the robot poses to recover physically consistent depth, which serves as a reliable condition for synthesizing new demonstrations. Finally, we propose a multi-conditional video generation model guided by depth as the primary control signal, together with action, edge, and ray maps, to synthesize spatially augmented multi-view manipulation videos. 
+            Experiments on four real-world manipulation tasks demonstrate that policies trained on data generated from only 1-5 source demonstrations can match or outperform those trained on 50 real-world demonstrations, improving data efficiency by up to 10-50&times;. Moreover, experimental results on height and texture editing demonstrate the framework's flexibility and extensibility, indicating its potential to serve as a unified data generation framework.
           </p>
         </div>
       </div>
@@ -232,52 +224,154 @@
 
 <section class="section">
   <div class="container is-max-desktop">
-    <div class="columns is-centered">
+    <div class="columns is-centered has-text-centered">
       <div class="column is-full-width">
-        <h3 class="title is-4">Speed of High-dimensional Feature Rendering</h3>
+        <h3 class="title is-3">Method</h3>
         <div class="hero-body" style="text-align: center;">
-          <img src="./static/images/dim_all.png" style="width: 70%; height: auto;"/>
+          <img src="./static/images/framework.png" style="width: 100%; height: auto;"/>
         </div>
         <div class="content has-text-justified">
           <p>
-            This figure shows feature rendering time comparison with different GPUs. Note that the less advanced GPUs (RTX 3090 and RTX 4090) 
-            cannot accommodate the LangSplat model with feature dimensions of 1024 or higher due to running out of memory.
-            As we can see, our LangSplatV2 successfully decouples rendering speed from the dimensionality 
-            of rendering features, enabling the rendering of high-dimensional features at the computational cost of splatting 
-            an ultra-low-dimensional feature.
+            <strong>Figure 1. The framework of Real2Edit2Real.</strong> (1) Reconstruct metric-scale geometry from multi-view observations. (2)Synthesize novel
+              trajectories with reliable depth rendering. (3) Generate demonstrations controlled by temporal depth signals.
           </p>
         </div>
         <div class="hero-body" style="text-align: center;">
-          <img src="./static/images/speed.png" style="width: 70%; height: auto;"//>
-        </div>
-        <div class="hero-body" style="text-align: center;">
-          <img src="./static/images/speed_ablation.png" style="width: 70%; height: auto;"//>
+          <img src="./static/images/video_generation.png" style="width: 100%; height: auto;"//>
         </div>
         <div class="content has-text-justified">
           <p>
-            These figures show our contributions to inference speeding up.
-            Rendering three semantic levels in parallel can reduce the rendering time from 6.0 ms to 2.0 ms per query. The sparse coefficient field can significantly speed up the decoding stage from 83.1 ms/q to 0.1 ms/q by 
-            changing the heavy weight decoder to a simple matrix multiplication operation. Efficient sparse coefficient 
-            splatting method effectively transformed the 192-dimensional rendering into 12-dimensional rendering, 
-            reducing the rendering time from 5.3 ms to 2.0 ms per query through CUDA optimization.
+            <strong>Figure 2. The framework of 3D-Controlled Video Generation. </strong> We utilize depth as the 3D control interface, in conjunction with edges,
+              actions, and ray maps, to guide the generation of multi-view demonstrations.
           </p>
         </div>
-        <h3 class="title is-4">Visualization of Open-vocabulary 3D Query</h3>
-        <div class="hero-body">
-          <img src="./static/images/loc_paper.png"/>
-        </div>
-        <div class="content has-text-justified">
-          <p>
-            Visualization of the open-vocabulary 3D object localization results. We observe that our LangSpaltV2 can give more accurate localization predictions compared with LangSplat. For example, our LangSplatV2 can give the correct prediction for "pumpkin" while LangSplat entirely fails in this query.
-          </p>
-        <div class="hero-body">
-          <img src="./static/images/seg_paper.png"/>
-        </div>
-        <div class="content has-text-justified">
-          <p>
-            Visualization of the open-vocabulary 3D segmentation results in three datasets. We observe that our LangSplatV2 can generate more accurate masks compared with LangSplat. For example, in the "Kitchen" scene, LangSplat predicts a noisy mask for the "ketchup" query, while our LangSplatV2 generates more precise and clean masks.
-          </p>
-        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* 任务选择按钮容器 */
+  .task-selector {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  /* 按钮样式 */
+  .task-btn {
+    padding: 10px 20px;
+    margin: 0 5px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+  }
+
+  /* 选中状态的按钮 */
+  .task-btn.active {
+    background-color: #3273dc; /* 常用科研主页蓝色 */
+    color: white;
+    border-color: #3273dc;
+  }
+
+  /* 3x3 视频网格容器 */
+  .video-grid {
+    display: grid;
+    /* 定义3列，每列等宽 */
+    grid-template-columns: repeat(3, 1fr);
+    /* 定义行间距和列间距 */
+    gap: 10px; 
+    max-width: 1000px; /* 根据你的版面调整 */
+    margin: 0 auto;
+  }
+
+  .video-grid-2 {
+    display: grid;
+    /* 定义3列，每列等宽 */
+    grid-template-columns: repeat(4, 1fr);
+    /* 定义行间距和列间距 */
+    gap: 10px; 
+    max-width: 1000px; /* 根据你的版面调整 */
+    margin: 0 auto;
+  }
+
+  /* 列标题样式 */
+  .grid-header {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-bottom: 5px;
+  }
+
+  /* 视频通用样式 */
+  .video-grid video {
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    display: block;
+  }
+</style>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h3 class="title is-3">Generated Demonstrations</h3>
+          <div class="task-selector">
+            <button class="task-btn active" onclick="switchTaskGenDemo('mug_to_basket', this)">Mug to Basket</button>
+            <button class="task-btn" onclick="switchTaskGenDemo('pour_water', this)">Pour Water</button>
+            <button class="task-btn" onclick="switchTaskGenDemo('lift_box', this)">Lift Box</button>
+            <button class="task-btn" onclick="switchTaskGenDemo('scan_barcode', this)">Scan Barcode</button>
+          </div>
+      
+          <div class="video-grid">
+            <div class="grid-header">Left Wrist</div>
+            <div class="grid-header">Head</div>
+            <div class="grid-header">Right Wrist</div>
+      
+            <video id="vid_g1_left" autoplay muted loop playsinline src="./static/videos/generated_videos/mug_to_basket/ep1_hand_left.mp4"></video>
+            <video id="vid_g1_head" autoplay muted loop playsinline src="./static/videos/generated_videos/mug_to_basket/ep1_head.mp4"></video>
+            <video id="vid_g1_right" autoplay muted loop playsinline src="./static/videos/generated_videos/mug_to_basket/ep1_hand_right.mp4"></video>
+      
+            <video id="vid_g2_left" autoplay muted loop playsinline src="./static/videos/generated_videos/mug_to_basket/ep2_hand_left.mp4"></video>
+            <video id="vid_g2_head" autoplay muted loop playsinline src="./static/videos/generated_videos/mug_to_basket/ep2_head.mp4"></video>
+            <video id="vid_g2_right" autoplay muted loop playsinline src="./static/videos/generated_videos/mug_to_basket/ep2_hand_right.mp4"></video>
+      
+            <video id="vid_g3_left" autoplay muted loop playsinline src="./static/videos/generated_videos/mug_to_basket/ep3_hand_left.mp4"></video>
+            <video id="vid_g3_head" autoplay muted loop playsinline src="./static/videos/generated_videos/mug_to_basket/ep3_head.mp4"></video>
+            <video id="vid_g3_right" autoplay muted loop playsinline src="./static/videos/generated_videos/mug_to_basket/ep3_hand_right.mp4"></video>
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h3 class="title is-3">Policy From Generated Data</h3>
+          <div class="task-selector">
+            <button class="task-btn active" onclick="switchTaskReal('mug_to_basket', this)">Mug to Basket</button>
+            <button class="task-btn" onclick="switchTaskReal('pour_water', this)">Pour Water</button>
+            <button class="task-btn" onclick="switchTaskReal('lift_box', this)">Lift Box</button>
+            <button class="task-btn" onclick="switchTaskReal('scan_barcode', this)">Scan Barcode</button>
+          </div>
+      
+          <div class="video-grid-2">
+            
+            <div class="grid-header">Go-1</div>
+            <video id="vid_g1_ep1" autoplay muted loop playsinline src="./static/videos/gen2real_videos/go-1/mug_to_basket1.mp4"></video>
+            <video id="vid_g1_ep2" autoplay muted loop playsinline src="./static/videos/gen2real_videos/go-1/mug_to_basket2.mp4"></video>
+            <video id="vid_g1_ep3" autoplay muted loop playsinline src="./static/videos/gen2real_videos/go-1/mug_to_basket3.mp4"></video>
+            
+            <div class="grid-header">&pi;0.5</div>
+            <video id="vid_pi05_ep1" autoplay muted loop playsinline src="./static/videos/gen2real_videos/pi-05/mug_to_basket1.mp4"></video>
+            <video id="vid_pi05_ep2" autoplay muted loop playsinline src="./static/videos/gen2real_videos/pi-05/mug_to_basket2.mp4"></video>
+            <video id="vid_pi05_ep3" autoplay muted loop playsinline src="./static/videos/gen2real_videos/pi-05/mug_to_basket3.mp4"></video>
+          </div>
       </div>
     </div>
   </div>
@@ -287,12 +381,11 @@
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>@article{li2025langsplatv2highdimensional3dlanguage,
-      title={LangSplatV2: High-dimensional 3D Language Gaussian Splatting with 450+ FPS}, 
-      author={Wanhua Li and Yujie Zhao and Minghan Qin and Yang Liu and Yuanhao Cai and Chuang Gan and Hanspeter Pfister},
+    <pre><code>@article{zhao2025real2edit2real,
+      title={Real2Edit2Real: Generating Robotic Demonstrations via a 3D Control Interface}, 
+      author={Yujie Zhao and Hongwei Fan and Di Chen and Shengcong Chen and Liliang Chen and Xiaoqi Li and Guanghui Ren and Hao Dong},
       year={2025},
       eprint={2507.07136},
-      journal={Advances in Neural Information Processing Systems},
       archivePrefix={arXiv},
       primaryClass={cs.GR},
       url={https://arxiv.org/abs/2507.07136}, 
@@ -323,3 +416,89 @@
 
 </body>
 </html>
+
+<script>
+  function switchTaskGenDemo(taskName, btnElement) {
+    // 1. 更新按钮状态
+    // 移除所有按钮的 active 类
+    var buttons = document.getElementsByClassName('task-btn');
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].classList.remove('active');
+    }
+    // 给当前点击的按钮添加 active 类
+    btnElement.classList.add('active');
+
+    // 2. 更新视频源 (假设文件名结构为: static/videos/{taskName}/{group}_{view}.mp4)
+    // 这里的路径前缀需要根据你实际存放视频的位置修改
+    const basePath = `./static/videos/generated_videos/${taskName}/`;
+
+    // 定义每个格子的 ID 和对应的文件名后缀
+    // 结构: [elementId, fileName]
+    const videoMapping = [
+      // Row 1
+      ['vid_g1_left',  'ep1_hand_left.mp4'],
+      ['vid_g1_head',  'ep1_head.mp4'],
+      ['vid_g1_right', 'ep1_hand_right.mp4'],
+      // Row 2
+      ['vid_g2_left',  'ep2_hand_left.mp4'],
+      ['vid_g2_head',  'ep2_head.mp4'],
+      ['vid_g2_right', 'ep2_hand_right.mp4'],
+      // Row 3
+      ['vid_g3_left',  'ep3_hand_left.mp4'],
+      ['vid_g3_head',  'ep3_head.mp4'],
+      ['vid_g3_right', 'ep3_hand_right.mp4']
+    ];
+
+    // 循环更新 source
+    videoMapping.forEach(item => {
+      const vidElement = document.getElementById(item[0]);
+      if (vidElement) {
+        vidElement.src = basePath + item[1];
+        // 重新加载并播放 (防止切换后停止)
+        vidElement.load();
+        vidElement.play(); 
+      }
+    });
+  }
+</script>
+
+<script>
+  function switchTaskReal(taskName, btnElement) {
+    // 1. 更新按钮状态
+    // 移除所有按钮的 active 类
+    var buttons = document.getElementsByClassName('task-btn');
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].classList.remove('active');
+    }
+    // 给当前点击的按钮添加 active 类
+    btnElement.classList.add('active');
+
+    // 2. 更新视频源 (假设文件名结构为: static/videos/{taskName}/{group}_{view}.mp4)
+    // 这里的路径前缀需要根据你实际存放视频的位置修改
+    const basePath = './static/videos/gen2real_videos/';
+
+    // 定义每个格子的 ID 和对应的文件名后缀
+    // 结构: [elementId, fileName]
+    const videoMapping = [
+      // Row 1
+      ['vid_g1_ep1', `go-1/${taskName}1.mp4`],
+      ['vid_g1_ep2', `go-1/${taskName}2.mp4`],
+      ['vid_g1_ep3', `go-1/${taskName}3.mp4`],
+      // Row 2
+      ['vid_pi05_ep1', `pi-05/${taskName}1.mp4`],
+      ['vid_pi05_ep2', `pi-05/${taskName}2.mp4`],
+      ['vid_pi05_ep3', `pi-05/${taskName}3.mp4`],
+    ];
+
+    // 循环更新 source
+    videoMapping.forEach(item => {
+      const vidElement = document.getElementById(item[0]);
+      if (vidElement) {
+        vidElement.src = basePath + item[1];
+        // 重新加载并播放 (防止切换后停止)
+        vidElement.load();
+        vidElement.play(); 
+      }
+    });
+  }
+</script>
