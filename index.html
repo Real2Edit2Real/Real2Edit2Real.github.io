@@ -343,6 +343,11 @@
             <video id="vid_g3_head" autoplay muted loop playsinline src="./static/videos/generated_videos/mug_to_basket/ep3_head.mp4"></video>
             <video id="vid_g3_right" autoplay muted loop playsinline src="./static/videos/generated_videos/mug_to_basket/ep3_hand_right.mp4"></video>
           </div>
+          <div class="content has-text-centered">
+            <p>
+              <strong>Above Videos are with 2&times; speed up.</strong>
+            </p>
+          </div>
       </div>
     </div>
   </div>
@@ -371,6 +376,11 @@
             <video id="vid_pi05_ep1" autoplay muted loop playsinline src="./static/videos/gen2real_videos/pi-05/mug_to_basket1.mp4"></video>
             <video id="vid_pi05_ep2" autoplay muted loop playsinline src="./static/videos/gen2real_videos/pi-05/mug_to_basket2.mp4"></video>
             <video id="vid_pi05_ep3" autoplay muted loop playsinline src="./static/videos/gen2real_videos/pi-05/mug_to_basket3.mp4"></video>
+          </div>
+          <div class="content has-text-centered">
+            <p>
+              <strong>Above Videos are with 5&times; speed up.</strong>
+            </p>
           </div>
       </div>
     </div>
@@ -456,6 +466,7 @@
         vidElement.src = basePath + item[1];
         // 重新加载并播放 (防止切换后停止)
         vidElement.load();
+        vidElement.playbackRate = 2.0
         vidElement.play(); 
       }
     });
@@ -497,8 +508,23 @@
         vidElement.src = basePath + item[1];
         // 重新加载并播放 (防止切换后停止)
         vidElement.load();
+        vidElement.playbackRate = 5.0
         vidElement.play(); 
       }
+    });
+  }
+  window.onload = function() {
+    // 只选择 .video-grid 里面的 video 标签
+    // 这里的空格表示“后代选择器”
+    var videos = document.querySelectorAll('.video-grid video');
+    
+    videos.forEach(function(video) {
+      video.playbackRate = 2.0;
+    });
+    var videos = document.querySelectorAll('.video-grid-2 video');
+    
+    videos.forEach(function(video) {
+      video.playbackRate = 5.0;
     });
   }
 </script>
